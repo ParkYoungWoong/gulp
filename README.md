@@ -103,11 +103,20 @@ gulp.task('default', [
 
 ## gulp API
 
-### gulp.src()
+### gulp.src(globs[, options])
+
+해당 작업의 __대상이 되는 파일__을 지정
+
+#### globs
+type: `String` or `Array`
+
+```
+gulp.src(['client/*.js', '!client/b*.js', 'client/bad.js'])
+```
 
 ### gulp.dest()
 
-### gulp.task(name[, deps][, 실행함수])
+### gulp.task(name[, deps][, fn])
 
 `Gulp`가 수행할 작업을 설정한다.
 
