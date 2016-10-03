@@ -105,14 +105,33 @@ gulp.task('default', [
 
 ### gulp.src(globs[, options])
 
-해당 작업의 __대상이 되는 파일__을 지정
+해당 작업의 __대상(파일)__을 지정
 
 #### globs
 type: `String` or `Array`
 
-```
+`!`를 이용하여 특정 파일 등을 제외할 수 있음
+```js
 gulp.src(['client/*.js', '!client/b*.js', 'client/bad.js'])
 ```
+
+#### options
+type: `Object`
+
+##### options.buffer
+type: `Boolean` Default: `true`
+
+값을 `false`로 설정하면 스트림으로 `file.contents`를 반환하고 버퍼링을 하지 않음, 큰 파일로 작업할 경우에 유용.
+참고: Plugins might not implement support for streams.
+
+```js
+gulp.src('js/main.js', { buffer: false })
+```
+
+##### options.read
+type: `Boolean` Default: `true`
+
+값을 `false`로 설정하면 `null`로 `file.contents`를 반환하고 모든 파일을 읽을 수 없음.
 
 ### gulp.dest()
 
