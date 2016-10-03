@@ -60,7 +60,7 @@ gulp.task('server', function () {
         .pipe(webserver());
 });
 
-// 자바스크립트 파일을 하나로 합치고 압축한다.
+// 모든 자바스크립트 파일을 하나로 합치고 압축한다.
 gulp.task('combine-js', function () {
     return gulp.src(paths.js)
         .pipe(concat('common.js'))
@@ -68,13 +68,14 @@ gulp.task('combine-js', function () {
         .pipe(gulp.dest(dist + '/js'));
 });
 
-// sass 파일을 css 로 컴파일한다.
+// sass 파일을 css로 컴파일한다.
 gulp.task('compile-sass', function () {
     return gulp.src(paths.scss)
         .pipe(sass())
         .pipe(gulp.dest(dist + '/css'));
 });
 
+// HTML 파일을 압축한다.
 gulp.task('compress-html', function () {
     return gulp.src(paths.html)
         .pipe(minifyhtml())
