@@ -101,6 +101,26 @@ gulp.task('default', [
 ]);
 ```
 
+## gulp API
 
+### gulp.src()
 
+### gulp.dest()
 
+### gulp.task(name[, deps][, 실행함수])
+
+`Gulp`가 수행할 작업을 설정한다.
+
+#### name
+type: `String`
+- 수행할 작업의 이름을 설정
+
+#### deps
+type: `Array`
+- 해당 작업이 실행되기 전에 실행될 다른 작업들의 배열 (dependency)
+
+#### fn
+type: `Function`
+- 해당 작업의 동작을 설정
+
+### gulp.watch()
