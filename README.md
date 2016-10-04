@@ -157,7 +157,7 @@ type: `Array`
 
 변화가 감지되었을 때 실행할 작업(tasks)들의 배열
 
-on()를 이용하여 변화가 감지되면 `event`객체를 포함하는 콜백을 실행.
+.on()를 이용하여 변화가 감지되면 `event`객체를 포함하는 콜백을 실행.
 ```js
 var watcher = gulp.watch('js/**/*.js', ['uglify', 'reload']);
 watcher.on('change', function (event) {
