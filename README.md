@@ -115,25 +115,14 @@ type: `String` or `Array`
 gulp.src(['client/*.js', '!client/b*.js', 'client/bad.js'])
 ```
 
-#### options
-type: `Object`
+### gulp.dest(path[, options])
 
-##### options.buffer
-type: `Boolean` Default: `true`
+해당 작업의 결과물이 __저장될 경로__를 지정
 
-값을 `false`로 설정하면 스트림으로 `file.contents`를 반환하고 버퍼링을 하지 않음, 큰 파일로 작업할 경우에 유용.
-참고: Plugins might not implement support for streams.
+#### path
+type: `String` or `Function`
 
-```js
-gulp.src('js/main.js', { buffer: false })
-```
-
-##### options.read
-type: `Boolean` Default: `true`
-
-값을 `false`로 설정하면 `null`로 `file.contents`를 반환하고 모든 파일을 읽을 수 없음.
-
-### gulp.dest()
+파일이 작성될 경로를 지정
 
 ### gulp.task(name[, deps][, fn])
 
@@ -154,4 +143,24 @@ type: `Function`
 
 해당 작업의 동작을 설정
 
-### gulp.watch()
+### gulp.watch(glob[,opts],tasks)
+
+파일을 감시하거나 파일이 변화했을 때의 동작을 지정
+
+#### glob
+type: `String` or `Array`
+
+변화를 감시할 파일의 경로 및 배열을 지정
+
+#### tasks
+type: `Array`
+
+변화가 감지되었을 때 실행할 작업(tasks)들의 배열
+
+on()를 이용하여 변화가 감지되면 `event`객체를 포함하는 콜백을 실행.
+```js
+var watcher = gulp.watch('js/**/*.js', ['uglify', 'reload']);
+watcher.on('change', function (event) {
+    console.log(event.path, event.type);
+});
+```
